@@ -9,6 +9,7 @@ sudo apt update
 sudo apt install python3.8
 sudo apt install python3-pip -y
 sudo apt install curl -y
+
 sudo snap install node --classic
 sudo snap install dotnet-sdk --classic
 sudo snap install --classic code 
@@ -21,8 +22,9 @@ sudo snap install chromium
 sudo snap install opera
 sudo snap install atom --classic
 sudo snap install spotify
-sudo snap install docker
 sudo snap install dbeaver-ce
+
+
 
 wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
 sudo dpkg -i packages-microsoft-prod.deb
