@@ -3,6 +3,8 @@
 # sudo apt install wmctrl
 
 
+
+
 wmctrl -r Opera -t 0
 wmctrl -r Telegram  -t 0
 wmctrl -r 'Mozilla Thunderbird'  -t 0
@@ -14,6 +16,11 @@ wmctrl -r 'Microsoft​ Edge' -t 4
 wmctrl -r Postman  -t 6
 wmctrl -r Firefox -t 7
 
+
+#spotify &>/dev/null &
+#opera &>/dev/null &
+
+#code /workspace/gregory/skylab/f4phantom
 
 
 
