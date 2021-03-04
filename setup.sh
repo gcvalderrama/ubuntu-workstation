@@ -47,4 +47,14 @@ sudo apt-get update
 # Install PowerShell
 sudo apt-get install -y powershell
 # Start PowerShell
-pwsh
+# pwsh
+
+
+sudo apt-get install nmap
+
+# ifconfig | grep inet
+# sudo nmap -sn 192.168.18.0/24
+
+sudo apt-get update
+sudo apt-get install -y kubectl
+
