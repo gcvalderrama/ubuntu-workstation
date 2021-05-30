@@ -3,8 +3,6 @@
 # sudo apt install wmctrl
 
 
-
-
 wmctrl -r Opera -t 0
 wmctrl -r Telegram  -t 0
 wmctrl -r 'Mozilla Thunderbird'  -t 0
