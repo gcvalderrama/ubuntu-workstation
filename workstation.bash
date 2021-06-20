@@ -546,12 +546,120 @@ lvcreate
 lvcreate -s -n name -L 400M /dev/mapper/centos/...
 
 
+# raid 
+
+mdadm 
+
+# Quota package 
+
+xfs_quota 
 
 
+# SSH config 
+
+cat /etc/ssh/ssh_config # client
+cat /etc/ssh/sshd_config # server
+
+AllowUsers linda 
+set PasswordAuthentication no
 
 
+su - anna
+ssh-keygen 
+ssh-copy-id 
+ssh-agent /bin/bash 
+ssh-add 
 
 
+scp user@ubuntu:/etc/hosts other@ubuntu2:/etc/hosts
+
+rsync -avz /usr/share usr@ubutnu
+
+rsync -avz --delete /usr/share usr@ubutnu
+
+
+# ssh port forwarding to enable bastion host
+
+ssh -4  -L 2233:remotehost:22 localhost4 
+
+ssh -p 2233 localhost4
+
+# web service configuration
+
+/etc/httpd/conf/httpd.conf
+
+log  /var/log
+
+1.. update /etc/hosts
+
+aptget install httpd
+
+cd /etc/httpd/conf
+httpd.conf
+
+touch /etc/httpd/account.example.com.conf 
+
+<VirtualHost *:80>
+    ServerAdmin root@account.example.com
+    DocumentRoot 
+    ServerName
+    ErrorLog logs/account.example.com
+</VirtualHost>
+
+mkdir /web/account 
+mkdir /web/sales
+
+semanage fcontext -a -t httpd_sys_content_t "/web(/.*)?"
+
+a2ensite # ubuntu enable site
+
+# lftp available as command line client 
+sftp runs on top ssh 
+vsftpd very securty ftp , 
+tftp trivial ftp 
+
+yum install vsftpd 
+/etc/vsftpd/vsftpd.conf 
+
+grep ftp /etc/passwd
+
+cd /var/ftp
+
+systemctl start vsftpd 
+
+
+yum install lftp # client 
+
+yum install sftpd # use vliny 
+
+
+BIND 
+
+named  centos 
+bind9 ubuntu
+
+named.conf 
+listen-on
+allow-query  
+zone defines the dmaonis
+
+/etc/named.conf the zone file is identified 
+
+/etc/resolv.conf
+
+cache only dns server
+
+yum install unbound 
+
+/etc/unbound.conf
+
+systemctl status -l unbound 
+
+ss -tuna | grep  53
+
+netstat -tulpen | grep 53
+
+ps aux | grep dnsmasq
 
 
 
