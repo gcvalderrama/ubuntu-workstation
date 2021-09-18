@@ -1,5 +1,167 @@
+
+# obtain basic information system 
+
+top  # process activity dynamically updated 
+uptime # how log the system is running and the average load 
+ps # detailed information about processes
+pstree # a tree of processes and their connections
+iostat # cpu utilization and io statistics 
+free -h #  brief sumary of memory usage
+pmap 33333
+netstat # detailed networking statistics 
+tcpdump  # detailed anlaysis of network packages 
+
+
+sudo sar  3 3 # cpu information by 3
+sudo sar -b -h 3 4 # similar iostat
+sudo sar -r -h 3 3
+sudo ps auxf -o pid,user
+
+sudo ps -o pid,user,uid,priority,cputime,pmem,size,command
+
+pstree -aAp 33333
+
+top # interactive 
+
+
+vmstat 2 4 # repeat
+vmstat -p /dev/sdb0 2 4
+
+iostat -m /dev/sdb0 2 2000 # show information in mega
+
+iotop
+ionice -c 2 -n 3 -p 3333
+
+bonnie++ is a bechmarking tool to measure disk performance 
+
+
+
+
+
+
+
+sudo tail -f /var/log/messages
+dmesg -w # only kernel events
+
+stress-ng -c 8 -i 4 -m 6 -t 20s 
+stress-ng -m 4 -t 20s # put only a memory stressor
+
+uname # operation system 
+df # disk
+free # memory
+cat /proc/version
+sudo du --max-depth=1 -hx / # folder size to /  -h human -x non system folders
+
+ulimit -H -n 1600 # limit current shell to modify all /etc/security/limits.conf
+
+nice -19 cat & # set highest priority when start a process
+
+renice  +5 -p 20003 # change preiority on the fly 
+
+sudo apt-get install zsh
+
+ldd /usr/bin/vi # dynamic libraries
+
+apt-get show vim
+apt-cache depends vim
+apt-get --purge remove ... 
+apt-get clean
+
+# list hard or soft links 
+
+ls -liF file*
+
+
+#  FILE RAM DISK 
+
+sudo mkdir /mnt/tmpfs 
+sudo mount -t tmpfs node /mnt/tmpfs
+df -h /mnt/tmpfs
+sudo mount -t tmpfs -o size=1G none /mnt/tmpfs
+sudo umount /mnt/tmpfs
+df -h /dev/shm 
+df -h | grep  ' tmpfs'
+
+# format patition 
+sudo mkfs.ext4 /dev/sda9
+
+df -h
+du -h
+find . -maxdepth 1 -type d -exec du -shx {} \; | sort -hr
+
+free -m 
+
+apt install quota
+
+sudo mount -o remount /home
+sudo quotacheck -vu /home
+sudo quotaon -vu /home
+sudo edquota someusername
+
+sudo quotaon [flags] [filesystem]
+sudo quotaoff [flags] [filesystem]
+sudo quota -u
+sudo quota george
+
+#information about partition 
+sudo dumpe2fs /dev/sdb1
+
+# cryto volume with 
+cryptsetup --help
+
+$ sudo cryptsetup luksFormat /dev/sdc12
+$ sudo cryptsetup luksFormat --cipher aes /dev/sdc12 # /proc/crypto
+$ sudo cryptsetup --verbose luksOpen /dev/sdc12 SECRET
+$ sudo mkfs.ext4 /dev/mapper/SECRET
+$ sudo mount /dev/mapper/SECRET /mnt
+$ sudo umount /mnt
+$ sudo cryptsetup --verbose luksClose SECRET
+
+
+$ ls -lF /sbin/lv*
+
+
+sysctl -a 
+
+# docker automation 
+docker rm $(docker ps -a -q)
+
+sudo useradd dexter
+# sudo useradd -s /bin/csh -m -k /etc/skel -c "Bullwinkle J Moose" bmoose
+$ sudo userdel morgan
+$ sudo usermod -L dexter
+
+# list users
+cat /etc/passwd 
+$ passwd
+
+$ ssh remote_computer.com
+$ ssh some_user@remote_computer.com
+$ ssh some_user@remote_computer.com apt-get update
+$ scp file.txt remote_computer.com:/tmp
+$ scp usr1@rem1.com:/tmp/f.txt usr2@rem2.com:/tmp/nf.txt
+$ scp -r some_dir farflung.com:/tmp/some_dir
+
+$ for machines in node1 node2 node3
+  do
+      (ssh $machines some_command &)
+  done
+
+  $ ssh-keygen
+  
+
+
+
+
+
+# =====  install managment tools 
+
+$ sudo [dnf|zypper|apt-get] install tigervnc*
+
+
+
 sudo apt install net-tools
-sudo apt  install nmap 
+sudo apt install nmap 
 sudo apt install chrony
 sudo apt install firewalld
 sudo apt install apparmor-utils
@@ -15,6 +177,7 @@ sudo arp-scan --interface=eno1 --localnet | grep Raspberry
 ssh-keygen -f ~/.ssh/minionkey
 
 # ssh-copy-id -i ~/.ssh/minionkey ubuntu@192.168.18.35
+# ssh-copy-id -i ~/.ssh/nftlabssh developer@192.168.18.86
 
 # login ubuntu 
 # ssh ubuntu@192.168.18.35
@@ -661,6 +824,48 @@ netstat -tulpen | grep 53
 
 ps aux | grep dnsmasq
 
+
+apt-get install nfs-utils 
+vim /etc/exports
+systemctl status nfs-server 
+nfsclient -l localhost
+showmnount -e localhost
+
+samba install
+/etc/samba/smb.conf
+smbpasswd -a user in linux 
+
+
+smbclient 
+
+
+mail
+
+systemctl status postfix 
+telnet localhost 25
+mail
+conf /etc/postfix/main.cf
+
+
+install dovecot mutt
+
+/etc/dovecot/dovecot.conf
+
+mail -s hello  linda
+
+
+proxy \
+
+systemctl enable squid 
+/etc/squad/squad.conf
+
+
+docker search mysql 
+
+
+# network status 
+
+ss -nltp # show process listening 
 
 
 
